@@ -1,9 +1,18 @@
+import string
 import nltk
 from nltk.corpus import stopwords
+#nltk.download('book')
 #nltk.download('stopwords')
+#nltk.download('omw-1.4')
 from nltk.stem.porter import PorterStemmer
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.corpus import wordnet as wn
+
+def removePunctuation(tokens):
+        exclude = set(string.punctuation)
+        return [x for x in tokens if x not in exclude]
+def removeStopWords(tokens):
+    return [x for x in tokens if x not in stopwords.words('english')]
 
 #classe che implementa varie fasi di preprocessing sul testo using python nltk modules
 class Preprocessor():
@@ -65,7 +74,8 @@ class Preprocessor():
         count = 1
         for line in file:
             for word in line.split():
-                token = self.lemmatizer.lemmatize(word.lower())
+                token = self.lancaster.stem(self.lemmatizer.lemmatize(''.join(removePunctuation(word.lower()))))
+                print(token)
                 if not token in stopwords.words('english'):
                     if token not in trie:
                         trie[token] = [docfile,count]
@@ -78,4 +88,12 @@ class Preprocessor():
                 self.inv_index[token].append(trie[token])
             else:
                 self.inv_index[token].append(trie[token])
+            
 
+if __name__=='__main__':
+    pre = Preprocessor()
+    example = 'text to try the position counting of characters. \n what do i do?'
+    pre.create_trie('File1.txt')
+    pre.create_trie('Doc2.txt')
+    pre.create_trie('Text3.txt')
+    print(pre.inv_index)
