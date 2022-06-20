@@ -3,7 +3,7 @@ from whoosh import index
 from whoosh.fields import *
 #from . import Preprocessor
 
-DOCPATH = os.path.abspath(os.getcwd()) + "\Docs"
+DOCPATH = os.path.abspath(os.getcwd()) + "\files"
 SCHEMA = Schema(title=TEXT(stored=True),body=TEXT(stored=True))
 
 def add_doc(writer, path):
