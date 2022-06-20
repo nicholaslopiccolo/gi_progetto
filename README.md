@@ -8,5 +8,7 @@ Progetto di gestione dell'informazione, sviluppato in cooperazione con Daniele B
 # Installazione ed esecuzione
 pip3 install -r requirements.txt
 
+'''
 cd src
 python3 main.py
+'''
