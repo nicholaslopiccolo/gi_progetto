@@ -16,7 +16,7 @@ class WebCrawler:
 
     def __init__(self,limit=300):
         self.LIMIT = limit
-        self.CORPUS_PATH = "./Docs"
+        self.CORPUS_PATH = "../Docs"
         self.links = []
 
 
@@ -96,6 +96,7 @@ class WebCrawler:
         La funziona lancia il crawler che scava nel dominio alla ricerca di:
         contenuto e altri link a cui agganciarsi per le prossime richieste
         """
+        self.links = []
         self.INITIAL_URL = initial_url
         self.INITIAL_DOMAIN = WebCrawler.get_domain(self.INITIAL_URL)
 
@@ -150,6 +151,7 @@ class WebCrawler:
         La funziona lancia il crawler che scava nel dominio alla ricerca di:
         contenuto e altri link a cui agganciarsi per le prossime richieste
         """
+        self.links = []
         self.INITIAL_URL = initial_url
         self.INITIAL_DOMAIN = WebCrawler.get_domain(self.INITIAL_URL)
 
@@ -197,16 +199,3 @@ class WebCrawler:
             self.create_document_eventbrite(soup,url,index)
 
             index +=1
-
-
-
-if __name__ == '__main__':
-    
-    wc = WebCrawler(limit=20)
-
-    # Si può passare un url iniziale alle funzioni di run
-    wc.run_meetup()
-    #wc.run_meetup(initial_url="https://www.meetup.com/find/?location=it--bo--Bologna&source=EVENTS")
-
-    wc.run_eventbrite()
-    #wc.run_eventbrite(initial_url="https://www.eventbrite.it/e/biglietti-i-manoscritti-di-qumran-249260694447?aff=ebdssbdestsearch")

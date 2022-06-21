@@ -6,16 +6,18 @@ Progetto di gestione dell'informazione, sviluppato in cooperazione con Daniele B
 - BeautifulSoup
 
 # Installazione ed esecuzione
+
+```shell
 pip3 install -r requirements.txt
 
-```
 cd src
 python3 main.py
-'''
-TODO:
-Collezione documenti : webcrawler con beautiful soup, web scraper per estrazione info dai siti?
+```
+
+# TODO:
+Collezione documenti : webcrawler con beautiful soup, web scraper per estrazione info dai siti
 Preprocessing : nltk 
 Indexing, query processing, ranking : whoosh
 modulo spellchecker python -> correzione delle query (intendevi forse ...?)
-benchmark 
+Benchmark 
 presentazione

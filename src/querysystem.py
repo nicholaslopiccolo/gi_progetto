@@ -13,6 +13,7 @@ class QuerySystem:
     def search(self):
         q = QuerySystem.query(input("Type your query: "))
         self.queries.append(q)
+        
     class query:
         def __init__(self):
             self.str = str
