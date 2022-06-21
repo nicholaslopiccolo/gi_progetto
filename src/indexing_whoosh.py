@@ -4,18 +4,20 @@ from whoosh import index
 from whoosh.fields import *
 from whoosh.qparser import MultifieldParser
 from whoosh import scoring
-from gi_progetto.src.preprocessor import preprocess
+from preprocessor import preprocess
 
 
 DOCPATH = os.path.abspath(os.getcwd()) + "\Docs"
 SCHEMA = Schema(title=TEXT(stored=True),body=TEXT(stored=True))
 
-#funzione che legge un documento e lo aggiunge all'indice secondo lo schema, per path si intende il nome del documento
+#funzione che legge un documento e lo aggiunge all'indice secondo lo schema, per path si intende il nome del documento.
+#Ho presupposto che questi documenti vadano preprocessati
 def add_doc(writer, path):
-  fileobj = open(path, "rb")
+  fileobj = open(path, "r",encoding='utf-8')
   content = fileobj.read()
+  content = preprocess(content)
   fileobj.close()
-  writer.add_document(title=path, content=content)
+  writer.add_document(title=path, body=content)
 
 
 #oggetto schema serve per definire come viene salvato l'indice 
@@ -27,9 +29,9 @@ def create_index():
       os.mkdir("indexdir")
   for dir in os.listdir(DOCPATH):
     ix = index.create_in("indexdir", SCHEMA,indexname=dir)
-    writer = ix.writer
+    writer = ix.writer()
     for doc in os.listdir(os.path.join(DOCPATH,dir)):
-      add_doc(writer,doc)
+      add_doc(writer,os.path.join(DOCPATH,dir,doc))
     writer.commit()
 
 def search_index(indexname,keyword):
@@ -44,3 +46,4 @@ def search_index(indexname,keyword):
 
 if __name__ == '__main__':
   create_index()
+  search_index("www.meetup.com","0.txt")

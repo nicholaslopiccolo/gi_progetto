@@ -11,7 +11,7 @@ lancaster = LancasterStemmer()
 lemmatizer = nltk.WordNetLemmatizer()
 
 def preprocess(text):
-    tokens = tokenize(text)
+    tokens = tokenize(text.lower())
     tokens = removePunctuation(tokens)
     tokens = removeStopWords(tokens)
     tokens = lemmatize(tokens)
