@@ -17,7 +17,7 @@ class WebCrawler:
     def __init__(self,limit=300):
         self.LIMIT = limit
         self.CORPUS_PATH = "../Docs"
-        self.links = []
+        self.links = set()
 
 
     @staticmethod
@@ -65,26 +65,19 @@ class WebCrawler:
             except AttributeError:
                 pass
             
-            divs = soup.find_all('div',{'class':'event-details__data'})
+            divs_date = soup.find_all('p',{'data-testid':'event-date'})
+            divs_time = soup.find_all('p',{'data-testid':'event-time'})
+
             try:
-                data = ', '.join([text for text in divs[0].stripped_strings][:-1])
-                f.write(data+"\n")
+                data = "{0}, {1}".format(', '.join(divs_date[0].stripped_strings),', '.join(divs_time[0].stripped_strings))
+                f.write(data+"\n\n")
             except Exception:
                 f.write('--no date--\n\n')
-            finally:
-                try:
-                    luogo = ', '.join([text for text in divs[1].stripped_strings][:-2])
-                    f.write(luogo+"\n")
-                except Exception:
-                    f.write('--no location--\n\n')
-                finally:
-                    f.write('\n')
 
 
             try:
                 # Rimozione dati inutili riguardanti date e luogo
-                [div.decompose() for div in soup.find_all('div',{'class':'event-details__data'})]
-                div = soup.find_all('div',{'class':'listing-info__body'})[0]
+                div = soup.find_all('div',{'class':'has-user-generated-content'})[0]
                 f.write('\n'.join([text for text in div.stripped_strings]))
             except Exception:
                 f.write('--no body--\n\n')
@@ -101,10 +94,11 @@ class WebCrawler:
         self.INITIAL_DOMAIN = WebCrawler.get_domain(self.INITIAL_URL)
 
         html = requests.get(self.INITIAL_URL).text
+
         self.links.append(self.INITIAL_URL)
         index = 0
 
-        # Esegue il crawling di 300 siti link
+        # Esegue il crawling di LIMIT siti link
         while len(self.links) < self.LIMIT and index < len(self.links):
             soup = BeautifulSoup(html, 'html.parser')
             a_list = soup.find_all("a")
@@ -114,11 +108,11 @@ class WebCrawler:
                 support = { link.get('href') for link in a_list if link.get('href') and re.search(self.URL_PATTERN, link.get('href')) and re.search("/events/",link.get('href')) }
             except TypeError:
                 continue
-            new_links = { link for link in support if WebCrawler.get_domain(link) == self.INITIAL_DOMAIN }
+            
+            new_links = [link for link in support if WebCrawler.get_domain(link) == self.INITIAL_DOMAIN]
             self.links += new_links
 
             url = self.links[index]
-            
 
             print("Crawling: {0}".format(url))
             print("  Found: {0}".format(len(new_links)))
@@ -126,15 +120,13 @@ class WebCrawler:
 
             index += 1
 
-            # Un generico errore durante richiesta
-            try:
-                html = requests.get(url).text
-            except Exception:
-                pass
+        # Elimina il primo link che di solito non ha all'interno informazioni su un evento specifico
+        del self.links[0]
 
         # Crea i documenti dalla source
         index = 0
-        for url in self.links:
+                
+        for url in self.links[1:]:
             try:
                 html = requests.get(url).text
             except Exception:
@@ -144,6 +136,8 @@ class WebCrawler:
             self.create_document_meetup(soup,url,index)
 
             index +=1
+            if index > self.LIMIT:
+                break
 
 
     def run_eventbrite(self,initial_url="https://www.eventbrite.it/d/italy--carpi-centro/bologna/?page=1"): 
@@ -156,6 +150,7 @@ class WebCrawler:
         self.INITIAL_DOMAIN = WebCrawler.get_domain(self.INITIAL_URL)
 
         html = requests.get(self.INITIAL_URL).text
+
         self.links.append(self.INITIAL_URL)
         index = 0
 
@@ -169,7 +164,8 @@ class WebCrawler:
                 support = { link.get('href') for link in a_list if link.get('href') and re.search(self.URL_PATTERN, link.get('href')) and re.search("/e/",link.get('href')) }
             except TypeError:
                 continue
-            new_links = { link for link in support if WebCrawler.get_domain(link) == self.INITIAL_DOMAIN }
+
+            new_links = [link for link in support if WebCrawler.get_domain(link) == self.INITIAL_DOMAIN]
             self.links += new_links
 
             url = self.links[index]
@@ -181,15 +177,10 @@ class WebCrawler:
 
             index += 1
 
-            # Un generico errore durante richiesta
-            try:
-                html = requests.get(url).text
-            except Exception:
-                pass
-
         # Crea i documenti dalla source
         index = 0
-        for url in self.links:
+
+        for url in self.links[1:]:
             try:
                 html = requests.get(url).text
             except Exception:
@@ -199,3 +190,6 @@ class WebCrawler:
             self.create_document_eventbrite(soup,url,index)
 
             index +=1
+            
+            if index > self.LIMIT:
+                break
