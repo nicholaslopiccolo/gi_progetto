@@ -1,4 +1,5 @@
 import re
+import os
 
 emoji_pattern = re.compile("["
         u"\U0001F600-\U0001F64F"  # emoticons
@@ -28,6 +29,7 @@ class extractor:
         self.extract()
 
     def extract(self):
+        print(self.path)
         with open(self.path) as f:
             raw_lines = [emoji_pattern.sub(r'', line) for line in f.read().splitlines()]
             lines = [line for line in raw_lines if line]
@@ -40,8 +42,10 @@ class extractor:
     def __str__(self):
         return "URL:\n{0}\nEVENT NAME:\n{1}\n\nDATE:\n{2}\n\nCONTENT:\n{3}".format(self.url,self.event_name,self.date,'\n'.join(self.content))
 
-e_meetup = extractor("../Docs/www.meetup.com/0.txt")
+
+
+'''e_meetup = extractor("./Docs/www.meetup.com/0.txt")
 print(e_meetup)
 
 e_meetup = extractor("../Docs/www.eventbrite.it/0.txt")
-print(e_meetup)
+print(e_meetup)'''

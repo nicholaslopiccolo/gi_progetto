@@ -1,15 +1,37 @@
+from concurrent.futures import thread
+from gi_progetto.src.indexing_whoosh import ranking_merged
 import preprocessor
 from webcrawler import WebCrawler
+from threading import Thread
+import extractor
 
 FILES_PATH = '../Docs/'
 
 def start_crawling(limit=20):
     wc = WebCrawler(limit=limit)
     # Si può passare un url iniziale alle funzioni di run
-    wc.run_meetup()
+    t1 = Thread(target = wc.run_meetup())
+    t2 = Thread(target = wc.run_eventbrite())
+
+    t1.start()
+    t2.start()
+    t2.join()
+    t1.join()
     #wc.run_meetup(initial_url="https://www.meetup.com/find/?location=it--bo--Bologna&source=EVENTS")
-    wc.run_eventbrite()
     #wc.run_eventbrite(initial_url="https://www.eventbrite.it/e/biglietti-i-manoscritti-di-qumran-249260694447?aff=ebdssbdestsearch")
+
+def submit_query(query):
+    results = ranking_merged(query)
+    if results == []:
+        print("La query non ha dato risultati utili, provare a riformulare")
+        return
+    count = 0
+    for x in results:
+        print(extractor(x.url))
+        count += 1
+        if count == 10:
+            if (input("show more results? (y/n)") == "n"):
+                return
 
 def menu():
     c = input("""
@@ -26,7 +48,7 @@ def menu():
             limit = input("Insert the limit of the search (integer number):")
             start_crawling(limit=int(limit))
         elif x==2:
-            pass
+            submit_query(input("insert query"))
         elif x==3:
             pass
         elif x==4:

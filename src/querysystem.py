@@ -15,5 +15,6 @@ class QuerySystem:
         self.queries.append(q)
         
     class query:
-        def __init__(self):
+        def __init__(self,str):
             self.str = str
+

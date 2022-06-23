@@ -1,23 +1,20 @@
-from logging import exception
 import os, os.path
 from whoosh import index
 from whoosh.fields import *
 from whoosh.qparser import MultifieldParser
 from whoosh import scoring
+from extractor import extractor
 from preprocessor import preprocess
 
-
-DOCPATH = os.path.abspath(os.getcwd()) + "\Docs"
-SCHEMA = Schema(title=TEXT(stored=True),body=TEXT(stored=True))
+INDEXPATH = os.path.abspath(os.path.pardir) + os.path.sep + "indexdir"
+DOCPATH = os.path.abspath(os.path.pardir) + os.path.sep +"Docs"  
+SCHEMA = Schema(event=TEXT(stored=True),content=TEXT(stored=True),url=TEXT(stored=True),path=TEXT(stored=True))
 
 #funzione che legge un documento e lo aggiunge all'indice secondo lo schema, per path si intende il nome del documento.
 #Ho presupposto che questi documenti vadano preprocessati
 def add_doc(writer, path):
-  fileobj = open(path, "r",encoding='utf-8')
-  content = fileobj.read()
-  content = preprocess(content)
-  fileobj.close()
-  writer.add_document(title=path, body=content)
+  doc = extractor(path)
+  writer.add_document(event=doc.event_name,content=doc.content,url=doc.url,path=doc.path)
 
 
 #oggetto schema serve per definire come viene salvato l'indice 
@@ -25,28 +22,36 @@ def add_doc(writer, path):
 
 #creo directory degli indici, per ogni cartella in Docs creo un indice
 def create_index():
-  if not os.path.exists("indexdir"):
-      os.mkdir("indexdir")
+  if not os.path.exists(INDEXPATH):
+      os.mkdir(INDEXPATH)
   for dir in os.listdir(DOCPATH):
-    ix = index.create_in("indexdir", SCHEMA,indexname=dir)
+    ix = index.create_in(INDEXPATH, SCHEMA,indexname=dir)
     writer = ix.writer()
     for doc in os.listdir(os.path.join(DOCPATH,dir)):
       add_doc(writer,os.path.join(DOCPATH,dir,doc))
     writer.commit()
 
 def search_index(indexname,keyword):
-  ix = index.open_dir("indexdir",indexname=indexname)
-  q = MultifieldParser(['title', 'body'], schema=ix.schema)
+  ix = index.open_dir(INDEXPATH,indexname=indexname)
+  q = MultifieldParser(['event', 'content'], schema=ix.schema)
   keyquery = preprocess(keyword.lower())
   query = q.parse(keyquery)
   with ix.searcher(weighting=scoring.TF_IDF()) as searcher:
         results = searcher.search(query, limit=30)
-        for r in results:
-          print(r)
+  return results
+
+def ranking_merged(query):
+  sites = ["www.meetup.com","www.eventbrite.it"]
+  results = []
+  results.extend(search_index("www.meetup.com"),query)
+  results.extend(search_index("www.eventbrite.it"),query)
+  results = sorted(results,key = lambda x: x.score ,reverse=True)
+  return results
+
 
 if __name__ == '__main__':
   create_index()
-  search_index("www.meetup.com",preprocess("concert"))
+  
 
   '''
   # Only show documents in the "rendering" chapter
