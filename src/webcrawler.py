@@ -136,7 +136,7 @@ class WebCrawler:
             self.create_document_meetup(soup,url,index)
 
             index +=1
-            if index > self.LIMIT:
+            if index > self.LIMIT-1:
                 break
 
 
@@ -191,5 +191,5 @@ class WebCrawler:
 
             index +=1
             
-            if index > self.LIMIT:
+            if index > self.LIMIT-1:
                 break
