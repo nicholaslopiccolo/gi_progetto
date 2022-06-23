@@ -41,7 +41,6 @@ def search_index(indexname,keyword):
   return results
 
 def ranking_merged(query):
-  sites = ["www.meetup.com","www.eventbrite.it"]
   results = []
   results.extend(search_index("www.meetup.com"),query)
   results.extend(search_index("www.eventbrite.it"),query)
