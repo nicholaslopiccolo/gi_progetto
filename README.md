@@ -10,6 +10,13 @@ Progetto di gestione dell'informazione, sviluppato in cooperazione con Daniele B
 ```shell
 pip3 install -r requirements.txt
 
+python
+import nltk
+nltk.download('book')
+nltk.download('stopwords')
+nltk.download('omw-1.4')
+exit()
+
 cd src
 python3 main.py
 ```
