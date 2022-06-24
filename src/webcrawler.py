@@ -193,3 +193,16 @@ class WebCrawler:
             
             if index > self.LIMIT-1:
                 break
+    
+    def remove_double_files(self):
+        fileset = set()
+        for dir in os.listdir(self.CORPUS_PATH):
+            for file in os.listdir(os.path.join(self.CORPUS_PATH,dir)):
+                with open(os.path.join(self.CORPUS_PATH,dir,file),'rb') as f:
+                    content = f.read() 
+                    if content in fileset:
+                        f.close()
+                        #print(file)
+                        os.remove(os.path.join(self.CORPUS_PATH,dir,file))
+                    else:
+                        fileset.add(content)

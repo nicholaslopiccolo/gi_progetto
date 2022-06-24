@@ -10,13 +10,11 @@ FILES_PATH = '../Docs/'
 def start_crawling(limit=20):
     wc = WebCrawler(limit=limit)
     # Si può passare un url iniziale alle funzioni di run
-    t1 = Thread(target = wc.run_meetup())
-    t2 = Thread(target = wc.run_eventbrite())
+    wc.run_meetup()
+    wc.run_eventbrite()
 
-    t1.start()
-    t2.start()
-    t2.join()
-    t1.join()
+    wc.remove_double_files()
+
     #wc.run_meetup(initial_url="https://www.meetup.com/find/?location=it--bo--Bologna&source=EVENTS")
     #wc.run_eventbrite(initial_url="https://www.eventbrite.it/e/biglietti-i-manoscritti-di-qumran-249260694447?aff=ebdssbdestsearch")
 
@@ -38,7 +36,7 @@ def menu():
     c = input("""
     1) WebCrawling (Scarica i dati dalle due sorgenti)
     2) Esegui una query
-    3) Ranking delle ultime query
+    3) Cronologia delle ultime query
     4) Benchmark
     5) Exit
     """)

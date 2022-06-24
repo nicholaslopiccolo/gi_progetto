@@ -14,6 +14,10 @@ SCHEMA = Schema(event=TEXT(stored=True),content=TEXT(stored=True),url=TEXT(store
 #Ho presupposto che questi documenti vadano preprocessati
 def add_doc(writer, path):
   doc = extractor(path)
+  if("meetup" in doc.url):
+    doc.url = "meetup"
+  else:
+    doc.url = "eventbrite"
   writer.add_document(event=preprocess(doc.event_name),content=preprocess(doc.content),url=doc.url,path=doc.path)
 
 
@@ -33,7 +37,7 @@ def create_index():
 
 def search_index(indexname,keyword):
   ix = index.open_dir(INDEXPATH,indexname=indexname)
-  q = MultifieldParser(['event', 'content'], schema=ix.schema)
+  q = MultifieldParser(['event', 'content','url'], schema=ix.schema)
   #keyquery = preprocess(keyword.lower())
   #query = q.parse(keyquery)
   query = q.parse(keyword)
