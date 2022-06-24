@@ -1,9 +1,9 @@
 from concurrent.futures import thread
-from gi_progetto.src.indexing_whoosh import ranking_merged
+from indexing_whoosh import ranking_merged
 import preprocessor
 from webcrawler import WebCrawler
 from threading import Thread
-import extractor
+from extractor import extractor
 
 FILES_PATH = '../Docs/'
 
@@ -23,14 +23,14 @@ def start_crawling(limit=20):
 def submit_query(query):
     results = ranking_merged(query)
     if results == []:
-        print("La query non ha dato risultati utili, provare a riformulare")
+        print("La query non ha dato risultati utili, provare a riformulare \n")
         return
     count = 0
     for x in results:
-        print(extractor(x.url))
+        print(extractor(x['file']).event_name)
         count += 1
         if count == 10:
-            if (input("show more results? (y/n)") == "n"):
+            if (input("show more results? (y/n) \n") == "n"):
                 return
 
 def menu():
@@ -48,7 +48,7 @@ def menu():
             limit = input("Insert the limit of the search (integer number):")
             start_crawling(limit=int(limit))
         elif x==2:
-            submit_query(input("insert query"))
+            submit_query(input("insert query \n"))
         elif x==3:
             pass
         elif x==4:

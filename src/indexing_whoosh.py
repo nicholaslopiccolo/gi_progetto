@@ -34,23 +34,28 @@ def create_index():
 def search_index(indexname,keyword):
   ix = index.open_dir(INDEXPATH,indexname=indexname)
   q = MultifieldParser(['event', 'content'], schema=ix.schema)
-  keyquery = preprocess(keyword.lower())
-  query = q.parse(keyquery)
+  #keyquery = preprocess(keyword.lower())
+  #query = q.parse(keyquery)
+  query = q.parse(keyword)
+  results = []
   with ix.searcher(weighting=scoring.TF_IDF()) as searcher:
-        results = searcher.search(query, limit=30)
+        for r in searcher.search(query, limit=30):
+          results.append({"file": r["path"], 'score': r.score})
   return results
 
 def ranking_merged(query):
   results = []
-  results.extend(search_index("www.meetup.com"),query)
-  results.extend(search_index("www.eventbrite.it"),query)
-  results = sorted(results,key = lambda x: x.score ,reverse=True)
+  results.extend(search_index("www.meetup.com",query))
+  results.extend(search_index("www.eventbrite.it",query))
+  results = sorted(results,key = lambda x: x['score'] ,reverse=True)
   return results
 
 
 if __name__ == '__main__':
   create_index()
-  
+  for r in ranking_merged("event:bologna OR content:marinai"):
+    print(extractor(r['file']).event_name)
+    
 
   '''
   # Only show documents in the "rendering" chapter

@@ -15,7 +15,7 @@ def preprocess(text):
     tokens = removePunctuation(tokens)
     tokens = removeStopWords(tokens)
     tokens = lemmatize(tokens)
-    tokens = stem(tokens)
+    #tokens = stem(tokens)
     return ' '.join(tokens)
 
 def removePunctuation(tokens):
