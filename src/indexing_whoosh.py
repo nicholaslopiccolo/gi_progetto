@@ -14,7 +14,7 @@ SCHEMA = Schema(event=TEXT(stored=True),content=TEXT(stored=True),url=TEXT(store
 #Ho presupposto che questi documenti vadano preprocessati
 def add_doc(writer, path):
   doc = extractor(path)
-  writer.add_document(event=doc.event_name,content=doc.content,url=doc.url,path=doc.path)
+  writer.add_document(event=preprocess(doc.event_name),content=preprocess(doc.content),url=doc.url,path=doc.path)
 
 
 #oggetto schema serve per definire come viene salvato l'indice 
@@ -51,10 +51,11 @@ def ranking_merged(query):
   return results
 
 
+
 if __name__ == '__main__':
   create_index()
   for r in ranking_merged("event:bologna OR content:marinai"):
-    print(extractor(r['file']).event_name)
+    print(extractor(r['file']))
     
 
   '''

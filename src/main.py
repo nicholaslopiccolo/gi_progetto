@@ -27,7 +27,8 @@ def submit_query(query):
         return
     count = 0
     for x in results:
-        print(extractor(x['file']).event_name)
+        print(f"\n Result {count+1}: \n")
+        print(extractor(x['file']))
         count += 1
         if count == 10:
             if (input("show more results? (y/n) \n") == "n"):

@@ -16,12 +16,12 @@ class extractor:
             lines = [line for line in raw_lines if line]
 
         self.url = lines[0]
-        self.event_name = preprocess(lines[1])
+        self.event_name = lines[1]
         self.date = lines[2]
-        self.content = preprocess(str(lines[4:]))
+        self.content = str(lines[4:])
 
     def __str__(self):
-        return "URL:\n{0}\nEVENT NAME:\n{1}\n\nDATE:\n{2}\n\nCONTENT:\n{3}".format(self.url,self.event_name,self.date,'\n'.join(self.content))
+        return "URL:\n{0}\nEVENT NAME:\n{1}\n\nDATE:\n{2}\n\nCONTENT:\n{3}".format(self.url,self.event_name,self.date,self.content)
 
 #e_meetup = extractor("../Docs/www.meetup.com/0.txt")
 #print(e_meetup)
