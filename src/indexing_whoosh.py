@@ -62,11 +62,3 @@ if __name__ == '__main__':
     print(extractor(r['file']))
     
 
-  '''
-  # Only show documents in the "rendering" chapter
-    allow_q = query.Term("chapter", "rendering")
-    # Don't show any documents where the "tag" field contains "todo"
-    restrict_q = query.Term("tag", "todo")
-
-    results = s.search(user_q, filter=allow_q, mask=restrict_q)
-    '''

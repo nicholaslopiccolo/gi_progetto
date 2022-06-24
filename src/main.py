@@ -1,19 +1,26 @@
-from concurrent.futures import thread
+import shutil
 from indexing_whoosh import ranking_merged
-import preprocessor
+import os
 from webcrawler import WebCrawler
-from threading import Thread
 from extractor import extractor
+from indexing_whoosh import create_index
 
 FILES_PATH = '../Docs/'
 
+def clean_docs():
+    for dir in os.listdir(FILES_PATH):
+        shutil.rmtree(os.path.join(FILES_PATH,dir), ignore_errors=True)
+
 def start_crawling(limit=20):
+    clean_docs()
     wc = WebCrawler(limit=limit)
     # Si può passare un url iniziale alle funzioni di run
     wc.run_meetup()
     wc.run_eventbrite()
 
     wc.remove_double_files()
+
+    create_index()
 
     #wc.run_meetup(initial_url="https://www.meetup.com/find/?location=it--bo--Bologna&source=EVENTS")
     #wc.run_eventbrite(initial_url="https://www.eventbrite.it/e/biglietti-i-manoscritti-di-qumran-249260694447?aff=ebdssbdestsearch")
