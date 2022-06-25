@@ -1,4 +1,5 @@
 import shutil
+from preprocessor import preprocess_query
 from indexing_whoosh import ranking_merged
 import os
 from webcrawler import WebCrawler
@@ -18,7 +19,7 @@ def start_crawling(limit=20):
     wc.run_meetup()
     wc.run_eventbrite()
 
-    wc.remove_double_files()
+    #wc.remove_double_files()
 
     create_index()
 
@@ -34,6 +35,7 @@ def submit_query(query):
     for x in results:
         print(f"\n Result {count+1}: \n")
         print(extractor(x['file']))
+        print(f" \n score:{x['score']}")
         count += 1
         if count == 10:
             if (input("show more results? (y/n) \n") == "n"):
@@ -54,7 +56,7 @@ def menu():
             limit = input("Insert the limit of the search (integer number):")
             start_crawling(limit=int(limit))
         elif x==2:
-            submit_query(input("insert query \n"))
+            submit_query(preprocess_query(input("insert query \n")))
         elif x==3:
             pass
         elif x==4:

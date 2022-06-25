@@ -42,7 +42,7 @@ def search_index(indexname,keyword):
   #query = q.parse(keyquery)
   query = q.parse(keyword)
   results = []
-  with ix.searcher(weighting=scoring.TF_IDF()) as searcher:
+  with ix.searcher(weighting=scoring.BM25F(B=0.75, title_B=1.0, body_B=0.5, K1=2)) as searcher:   #scoring.TF_IDF()
         for r in searcher.search(query, limit=30):
           results.append({"file": r["path"], 'score': r.score})
   return results

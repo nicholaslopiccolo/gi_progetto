@@ -20,7 +20,7 @@ class extractor:
         self.content = str(lines[4:])
 
     def __str__(self):
-        return "URL:\n{0}\nEVENT NAME:\n{1}\n\nDATE:\n{2}\n\nCONTENT:\n{3}".format(self.url,self.event_name,self.date,self.content)
+        return "URL:\n{0}\n\nEVENT NAME:\n{1}\n\nDATE:\n{2}\n\nCONTENT:\n{3}\n\nPATH:\n{4}".format(self.url,self.event_name,self.date,self.content,self.path)
 
 #e_meetup = extractor("../Docs/www.meetup.com/0.txt")
 #print(e_meetup)

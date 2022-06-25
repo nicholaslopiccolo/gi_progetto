@@ -10,6 +10,16 @@ from nltk.corpus import wordnet as wn
 lancaster = LancasterStemmer()
 lemmatizer = nltk.WordNetLemmatizer()
 
+def preprocess_query(query):
+        RELOP = {'OR','AND','(',')',':'}
+        q = []
+        for word in query.split():
+                if word not in RELOP:
+                        q.append(preprocess(word))
+                else:
+                        q.append(word)
+        return ' '.join(q)
+
 def preprocess(text):
     tokens = tokenize(text.lower())
     tokens = removePunctuation(tokens)
@@ -23,7 +33,7 @@ def removePunctuation(tokens):
         return [x for x in tokens if x not in exclude]
 
 def removeStopWords(tokens):
-    return [x for x in tokens if x not in stopwords.words('english')]
+    return [x for x in tokens if (x not in stopwords.words('english') or x not in stopwords.words('italian'))]
 
 def tokenize(text):
     return nltk.word_tokenize(text.lower())
