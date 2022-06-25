@@ -50,7 +50,7 @@ def search_index(indexname,keyword):
 def ranking_merged(query):
   results = []
   results.extend(search_index("www.meetup.com",query))
-  results.extend(search_index("www.eventbrite.it",query))
+  results.extend(search_index("www.eventbrite.com",query))
   results = sorted(results,key = lambda x: x['score'] ,reverse=True)
   return results
 

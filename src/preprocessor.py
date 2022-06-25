@@ -11,13 +11,14 @@ lancaster = LancasterStemmer()
 lemmatizer = nltk.WordNetLemmatizer()
 
 def preprocess_query(query):
-        RELOP = {'OR','AND','(',')',':'}
+        RELOP = {'OR','AND','(',')',':','url','content','event'}
         q = []
         for word in query.split():
-                if word not in RELOP:
-                        q.append(preprocess(word))
-                else:
-                        q.append(word)
+                for op in RELOP:
+                        if op not in word:
+                                q.append(preprocess(word))
+                        else:
+                                q.append(word)
         return ' '.join(q)
 
 def preprocess(text):

@@ -29,8 +29,9 @@ def submit_query(query):
         print("La query non ha dato risultati utili, provare a riformulare \n")
         return
     count = 0
+    print("Documents found: "+ str(len(results)))
     for x in results:
-        print(f"\n Result {count+1}: \n")
+        print(f"\n\n\t Result {count+1}: \n")
         print(extractor(x['file']))
         print(f" \n score:{x['score']}")
         count += 1
@@ -53,7 +54,7 @@ def menu():
             limit = input("Insert the limit of the search (integer number):")
             start_crawling(limit=int(limit))
         elif x==2:
-            submit_query(preprocess_query(input("insert query \n")))
+            submit_query(input("insert query \n"))
         elif x==3:
             pass
         elif x==4:
