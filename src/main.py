@@ -15,16 +15,13 @@ def clean_docs():
 def start_crawling(limit=20):
     clean_docs()
     wc = WebCrawler(limit=limit)
-    # Si può passare un url iniziale alle funzioni di run
-    wc.run_meetup()
-    wc.run_eventbrite()
 
+    # Si può passare un url iniziale alle funzioni di run
+    wc.start_crawling("https://www.meetup.com/find/?source=EVENTS")
+    wc.start_crawling("https://www.eventbrite.com/d/ny--new-york/events/")
     #wc.remove_double_files()
 
     create_index()
-
-    #wc.run_meetup(initial_url="https://www.meetup.com/find/?location=it--bo--Bologna&source=EVENTS")
-    #wc.run_eventbrite(initial_url="https://www.eventbrite.it/e/biglietti-i-manoscritti-di-qumran-249260694447?aff=ebdssbdestsearch")
 
 def submit_query(query):
     results = ranking_merged(query)

@@ -16,7 +16,7 @@ class WebCrawler:
     def __init__(self,limit=300):
         self.LIMIT = limit
         self.CORPUS_PATH = "../Docs"
-        self.links = set()
+        self.links = []
 
 
     @staticmethod
@@ -83,116 +83,85 @@ class WebCrawler:
 
             print("\nfile created: {0} \nfor the url: {1}".format(file_name,url))
 
-    def run_meetup(self,initial_url="https://www.meetup.com"): 
+    def start_crawling(self,initial_url): 
         """
         La funziona lancia il crawler che scava nel dominio alla ricerca di:
         contenuto e altri link a cui agganciarsi per le prossime richieste
         """
         self.links = []
+        self.events = []
+        pattern_event_1 = re.compile("/events/")
+        pattern_event_2 = re.compile("/e/")
+        pattern_event_3 = re.compile("/ticket/")
+
+        pattern_not_event_1 = re.compile("/attendees/")
+
         self.INITIAL_URL = initial_url
         self.INITIAL_DOMAIN = WebCrawler.get_domain(self.INITIAL_URL)
-
-        html = requests.get(self.INITIAL_URL).text
-
-        self.links.append(self.INITIAL_URL)
-        index = 0
-
-        # Esegue il crawling di LIMIT siti link
-        while len(self.links) < self.LIMIT and index < len(self.links):
-            soup = BeautifulSoup(html, 'html.parser')
-            a_list = soup.find_all("a")
-
-            # Carica solo url corretti
-            try: 
-                support = { link.get('href') for link in a_list if link.get('href') and re.search(self.URL_PATTERN, link.get('href')) and re.search("/events/",link.get('href')) }
-            except TypeError:
-                continue
-            
-            new_links = [link for link in support if WebCrawler.get_domain(link) == self.INITIAL_DOMAIN]
-            self.links += new_links
-
-            url = self.links[index]
-
-            print("Crawling: {0}".format(url))
-            print("  Found: {0}".format(len(new_links)))
-            print("  Total: {0}".format(len(self.links)))
-
-            index += 1
-
-        # Elimina il primo link che di solito non ha all'interno informazioni su un evento specifico
-        del self.links[0]
-
-        # Crea i documenti dalla source
-        index = 0
-                
-        for url in self.links[1:]:
-            try:
-                html = requests.get(url).text
-            except Exception:
-                continue
-
-            soup = BeautifulSoup(html, 'html.parser')
-            self.create_document_meetup(soup,url,index)
-
-            index +=1
-            if index > self.LIMIT-1:
-                break
-
-
-    def run_eventbrite(self,initial_url="https://www.eventbrite.it/d/italy--carpi-centro/bologna/?page=1"): 
-        """
-        La funziona lancia il crawler che scava nel dominio alla ricerca di:
-        contenuto e altri link a cui agganciarsi per le prossime richieste
-        """
-        self.links = []
-        self.INITIAL_URL = initial_url
-        self.INITIAL_DOMAIN = WebCrawler.get_domain(self.INITIAL_URL)
-
-        html = requests.get(self.INITIAL_URL).text
 
         self.links.append(self.INITIAL_URL)
         index = 0
 
         # Esegue il crawling di 300 siti link
-        while len(self.links) < self.LIMIT and index < len(self.links):
+        while len(self.events) < self.LIMIT and index < len(self.links):
+            url = self.links[index]
+            html = requests.get(url).text
             soup = BeautifulSoup(html, 'html.parser')
             a_list = soup.find_all("a")
 
             # Carica solo url corretti
             try: 
-                support = { link.get('href') for link in a_list if link.get('href') and re.search(self.URL_PATTERN, link.get('href')) and re.search("/e/",link.get('href')) }
+                support = { link.get('href') for link in a_list if link.get('href') and re.search(self.URL_PATTERN, link.get('href'))}
             except TypeError:
                 continue
-
+             
+            # Pulizia link doppi nei nuovi link
             new_links = [link for link in support if WebCrawler.get_domain(link) == self.INITIAL_DOMAIN]
+
+            # Pulizia link doppi nei link in memoria
             self.links += new_links
+            support = {link for link in self.links}
+            self.links = [link for link in support]
 
-            url = self.links[index]
+            old = len(self.events)
+            # Pulizia link doppi negli eventi in memoria
+            self.events += [link for link in new_links if (pattern_event_1.search(link) and not pattern_not_event_1.search(link)) or pattern_event_2.search(link) or pattern_event_3.search(link)]
+            support = {link for link in self.events}
+            self.events = [link for link in support]
+            new = len(self.events)
             
-
             print("Crawling: {0}".format(url))
-            print("  Found: {0}".format(len(new_links)))
-            print("  Total: {0}".format(len(self.links)))
-
+            if old<new:
+                print("  Found: {0}".format(new-old))
+                print("  Total: {0}".format(old))
+            else:
+                print("  No events found.")
+                print("  Total: {0}".format(old))
             index += 1
 
+        self.start_scraping()
+
+    def start_scraping(self):
         # Crea i documenti dalla source
         index = 0
-
-        for url in self.links[1:]:
+                
+        for url in self.events:
             try:
                 html = requests.get(url).text
             except Exception:
                 continue
 
             soup = BeautifulSoup(html, 'html.parser')
-            self.create_document_eventbrite(soup,url,index)
+            
+            if WebCrawler.get_domain(url) == "www.meetup.com":
+                self.create_document_meetup(soup,url,index)
+            elif WebCrawler.get_domain(url) == "www.eventbrite.com":
+                self.create_document_eventbrite(soup,url,index)
 
             index +=1
-            
             if index > self.LIMIT-1:
                 break
-    
+
     def remove_double_files(self):
         fileset = set()
         for dir in os.listdir(self.CORPUS_PATH):
