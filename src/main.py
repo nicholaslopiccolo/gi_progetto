@@ -56,8 +56,6 @@ def benchmark():
     with open('query_benchmark.txt','r') as f:
         for line in f:
             queries.append(line)
-    print(natural_queries)
-    print(queries)
     for query in queries:
         results.append(ranking_merged(query)[:11])
     for result in results:
