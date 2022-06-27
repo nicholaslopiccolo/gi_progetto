@@ -52,15 +52,15 @@ def benchmark():
     results = []
     with open('query_natural_leng.txt','r') as f:
         for line in f:
-            natural_queries.append(line)
+            natural_queries.append(line[:-1])
     with open('query_benchmark.txt','r') as f:
         for line in f:
-            queries.append(line)
+            queries.append(line[:-1])
     for query in queries:
         results.append(ranking_merged(query)[:11])
     for result in results:
-        print(f'{natural_queries.pop(0)[:-1]}')
-        print(f'Eseguendo query: {queries.pop(0)[:-1]}')
+        print(f'{natural_queries.pop(0)}')
+        print(f'Eseguendo query: {queries.pop(0)}')
         print('numero di risultati ottenuto: ' + str(len(result)))
         print(f'Average Precision per primi 10 risultati: {precision_at_10thres.pop(0)} \n\n')
     print(f'\nMean Average Precision: {MAP} \n')
