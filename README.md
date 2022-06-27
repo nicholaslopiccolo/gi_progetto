@@ -21,6 +21,10 @@ cd src
 python3 main.py
 ```
 # Esecuzione Crawling
+```shell
+mkdir Docs
+```
+
 Al primo avvio, selezionare la voce del menu webcrawling, dare un minimo di 300 come limite e lasciare calcolare ( almeno 10 min )
 
 # Esecuzione benchmark
