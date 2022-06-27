@@ -10,8 +10,7 @@ INDEXPATH = os.path.abspath(os.path.pardir) + os.path.sep + "indexdir"
 DOCPATH = os.path.abspath(os.path.pardir) + os.path.sep +"Docs"  
 SCHEMA = Schema(event=TEXT(stored=True),content=TEXT(stored=True),url=TEXT(stored=True),path=TEXT(stored=True))
 
-#funzione che legge un documento e lo aggiunge all'indice secondo lo schema, per path si intende il nome del documento.
-#Ho presupposto che questi documenti vadano preprocessati
+#funzione che legge un documento e lo aggiunge all'indice secondo lo schema
 def add_doc(writer, path):
   doc = extractor(path)
   if("meetup" in doc.url):
@@ -19,10 +18,6 @@ def add_doc(writer, path):
   else:
     doc.url = "eventbrite"
   writer.add_document(event=preprocess(doc.event_name),content=preprocess(doc.content),url=doc.url,path=doc.path)
-
-
-#oggetto schema serve per definire come viene salvato l'indice 
-#schema = Schema(id=NUMERIC, title=TEXT(stored=True), body=TEXT(stored=True), url=TEXT(stored=True))
 
 #creo directory degli indici, per ogni cartella in Docs creo un indice
 def create_index():
@@ -54,11 +49,5 @@ def ranking_merged(query):
   results = sorted(results,key = lambda x: x['score'] ,reverse=True)
   return results
 
-
-
-if __name__ == '__main__':
-  create_index()
-  for r in ranking_merged("event:bologna OR content:marinai"):
-    print(extractor(r['file']))
     
 

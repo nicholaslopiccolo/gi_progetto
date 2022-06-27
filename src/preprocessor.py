@@ -7,9 +7,6 @@ from nltk.corpus import stopwords
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.corpus import wordnet as wn
 
-lancaster = LancasterStemmer()
-lemmatizer = nltk.WordNetLemmatizer()
-
 def preprocess_query(query):
         RELOP = {'OR','AND','(',')',':','url','content','event'}
         q = []
@@ -41,10 +38,12 @@ def tokenize(text):
 
 #Funzione lemmatizzatrice, riceve lista di tokens e restituisce lista di lemmi senza stopwords
 def lemmatize(tokens):
+    lemmatizer = nltk.WordNetLemmatizer()
     return [lemmatizer.lemmatize(t) for t in tokens]
 
 #Funzione Stemmer using Lancaster/Porter, restituisce lista con stem di lista di tokens passati come parametro
 def stem(tokens):
+    lancaster = LancasterStemmer()
     return [lancaster.stem(t) for t in tokens]
 
 #Function that tags every token passed as parameter and returns them in a list of tuples(token,tag)

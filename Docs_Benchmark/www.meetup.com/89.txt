@@ -1,0 +1,21 @@
+https://www.meetup.com/gdg-central-florida/events/286713365
+Make Amazing AR/VR experiences with WebXR, Wed, Jun 29, 2022, 7:00 PM   | Meetup
+--no date--
+
+DetailsHey, web developers! Interested in checking out the latest trends for building VR and AR experiences using web technologies? In general, we see that XR technologies will have market impacts in consumer entertainment, gaming, engineering, health care, and live events. During this meet up, we’ll survey the latest trends connected to WebXR and high impact tools like AFrame.IO and Unity 3D. Ready to build your corner of the META verse!? We look forward to building cool WebXR stuff together.  
+Agenda
+---
+Hosted By
+Javier Carrion, GDG Organizer
+Hey Hey, everyone. I want to introduce myself my name is Javier and I am from the land of the horse "Ocala". A little bit about me I am a Software Engineer (Web) for Design Interactive we play with the latest in human-system integration (HSI) in other words we get to play with holo lenses and such. I am active in the Orlando Development Community. My friends call me "Javi" and you guys are welcome to do so too.
+Michael Rosario, GDG Team Lead Member
+As an experienced software developer with over 19 years of experience, I enjoy helping organizations with agile software development, promoting cultures of innovation, and creative business solutions. I enjoy helping organizations and software teams discover the craft of continuous improvement. I am always looking for opportunities to serve leaders and teams who want to create more value with integrity, character, and predictability.
+Professional interests: AR/VR, Web dev, MAKERS movement, Agile leadership, Machine learning, Cultures of Innovation, Gaming & Game based learning, Visual analytics
+Christi Kapp, Founder & CEO
+Christi Kapp is a well-respected Management Consultant and Coach that has spoken at numerous professional conferences on topics ranging from business analysis, to managing organizational change.
+Christi’s career has included management consulting, executive leadership, coaching and teaching in the hospitality, training and technology industries. She has also managed performance, as well as the professional development of staff engaged in development and delivery of complex information system solutions, solution sales, training, and customer service.
+Her entrepreneurial background includes founding, growing and selling TechKnowQuest, Inc – one of the Orlando Area's Fastest Growing Tech Companies in 1998 (1992 – 2000). While at TechKnowQuest, she created custom courses for a number of clients and performed management consulting services. She has also performed coaching and consulting services through KnowledgeSpot, Inc, (2000 – 2007) and JustIntegration, Inc. (founded in 2006). She was also co-founder of Art In Motion LLC Custom Motorcycles (founded in 2007), and is Owner/Innkeeper at Kapp and Kappy Bed & Breakfast (2016)
+She is an accomplished author also. She has written several enterprise information technology books (Prentice-Hall), a UCF Master's thesis on “Regional Readiness for Homeland Security Information Sharing”, and in 2016, wrote a book chapter titled “Soft Factors Enabling Innovation” in the Apple Academic Press series called Ecosystems and Technology: Idea Generation and Content Model Processing.
+She has a B.S. Degree from the University of Rochester and a M.S. from the College of Health & Public Affairs at the University of Central Florida.
+Hendrix Tavarez, GDG Organizer
+Complete your event RSVP here: https://gdg.community.dev/events/details/google-gdg-central-florida-presents-make-amazing-arvr-experiences-with-webxr/.Google Developer Group Central FloridaSee more events

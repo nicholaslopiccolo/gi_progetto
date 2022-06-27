@@ -1,0 +1,16 @@
+https://www.meetup.com/code-labs-academy-nyc-coding-bootcamp/events/285420966
+Discover the Machine Learning Landscape, Thu, Jul 7, 2022, 1:00 PM   | Meetup
+--no date--
+
+Details*** To participate, please join us on Eventbrite! ***
+New exciting free training opportunity at Code Labs Academy!
+| About
+In this workshop, we will take a trip across the different types of machine learning algorithms and techniques.
+We will discover multiple cases of usage of Machine Learning by exploring supervised, semi-supervised, unsupervised, and reinforcement algorithms.
+We will also see what are the well-known ML models and how they are used. So if you want to build a global view of what is happening in Machine Learning, this is for you!
+| Prerequisites ✅
+No requirements! Beginner-friendly
+| Key takeaways 🧑‍💻
+Basic ML models
+Variety of algorithms
+Make sure to follow us for future workshops in Cybersecurity, Data Science, Web Development, and UX/UI Design!Code Labs Academy NYC - Coding BootcampSee more events

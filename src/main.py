@@ -8,10 +8,12 @@ from indexing_whoosh import create_index
 
 FILES_PATH = '../Docs/'
 
+#ripulisce cartella dei documenti
 def clean_docs():
     for dir in os.listdir(FILES_PATH):
         shutil.rmtree(os.path.join(FILES_PATH,dir), ignore_errors=True)
 
+#inizia il crawling popolando la cartella dei documenti
 def start_crawling(limit=20):
     clean_docs()
     wc = WebCrawler(limit=limit)
@@ -23,6 +25,7 @@ def start_crawling(limit=20):
 
     create_index()
 
+#stampa i risultati di una query sottoposta al motore
 def submit_query(query):
     results = ranking_merged(query)
     if results == []:
@@ -38,6 +41,32 @@ def submit_query(query):
         if count == 10:
             if (input("show more results? (y/n) \n") == "n"):
                 return
+            count = 0
+
+def benchmark():
+    NQueries_benchmark = 10
+    precision_at_10thres = [1,0.948,1,0.975,0.218,1,1,1,1,1]
+    MAP = sum(precision_at_10thres)/NQueries_benchmark
+    natural_queries = []
+    queries = []
+    results = []
+    with open('query_natural_leng.txt','r') as f:
+        for line in f:
+            natural_queries.append(line)
+    with open('query_benchmark.txt','r') as f:
+        for line in f:
+            queries.append(line)
+    print(natural_queries)
+    print(queries)
+    for query in queries:
+        results.append(ranking_merged(query)[:11])
+    for result in results:
+        print(f'{natural_queries.pop(0)[:-1]}')
+        print(f'Eseguendo query: {queries.pop(0)[:-1]}')
+        print('numero di risultati ottenuto: ' + str(len(result)))
+        print(f'Average Precision per primi 10 risultati: {precision_at_10thres.pop(0)} \n\n')
+    print(f'\nMean Average Precision: {MAP} \n')
+
 
 def menu():
     c = input("""
@@ -58,21 +87,19 @@ def menu():
         elif x==3:
             pass
         elif x==4:
-            pass
+            input('Prima di procedere con il benchmark, cancellare la cartella Docs e rinominare Docs_Benchmark in Docs.\nEnter per continure\n')
+            benchmark()
         elif x==5:
             exit()
 
     except ValueError:
-        print("Insert only numbers in the menu please.")
+        print("Insert only valid numbers in the menu please.")
         menu()
 
+#Main
 while True:
     menu()
 
-#FILES_PATH = '../files/'
-
-# Fase di crwling e ottenimento corpus dei documenti
-# potremmo usare i thread per parallelizzare le operazioni
 
 
 

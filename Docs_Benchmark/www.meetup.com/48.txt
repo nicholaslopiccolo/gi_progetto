@@ -1,0 +1,14 @@
+https://www.meetup.com/devops-nyc/events/286113384
+DevOps & Blockchain, Thu, Jul 14, 2022, 5:00 PM   | Meetup
+--no date--
+
+DetailsLet's talk about DevOps & Blockchain!
+Speakers:
+Bernard Lin, Blockchain Technologist
+Blockchain and DevOps
+Greg Patmore, Principal DevOps Engineer
+Building on SLOs as a part of Product/Service Intake Process Onboarding
+Defining good SLOs is a great thing to do, but how do we take that information and operationalize it in a way that enables our support teams to confidently manage that product/service safely and effectively? I will answer this and more questions about building a solid SRE foundations based upon SLOs.
+Thomas Behnken, Principal DevOps Engineers
+One Possible Future for DevOps - Identity, Date, and Money
+DevOps as a field is always changing. What has been a field focussed on pipeline development, micro services, and cloud adoption, is widely finding these concepts commoditized. These are my thoughts, with some color commentary, on the future of DevOps and where I think the focus may shift to.DevOps NYCSee more events

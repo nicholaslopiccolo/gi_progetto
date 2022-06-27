@@ -1,0 +1,50 @@
+https://www.meetup.com/techexcellence/events/286438189
+Xtrem TDD by Example (Yoan Thirion and Guillaume Faas), Wed, Jul 6, 2022, 5:30 PM   | Meetup
+--no date--
+
+DetailsYou have probably already heard or practiced Test-Driven Development (TDD) but have you already tried it in an Xtrem way?
+What do we mean by Xtrem?
+We propose to practice TDD on katas using mob programming and introducing different constraints that attendees can pick randomly.
+We expect attendees to find smart ways to overcome those constraints.
+Those can be of different types: Design, Testing, Practice, Architecture.
+Here are some example of constraints that we have documented on our website:
+
+Use a Test DataBuilder
+Write only pure functions
+Make at least 2 refactorings after a passing test
+Write your next test using Approval Testing approach
+Check the quality of your tests with Mutation Testing
+Check your dependency freshness
+and much more ...
+
+In this online session, we propose to:
+
+Present the website and the related concepts (Why we are building it) - 10 min
+Do a live coding session in pair on a code kata (in baby steps) to demonstrate how you can use Xtrem TDD to practice and learn - 50 min
+Q&A session - 30 min
+
+The live coding session will be done in C# but concepts are applicable in other languages. Java code and related guidelines will be provided as well.
+Website is available here: https://xtrem-tdd.netlify.app/
+#sharingiscaring
+About Yoan Thirion
+I have designed software since more than 15 years now. My various experiences in fields like banking, insurance and industrial environments at Luxembourg helped me understand what was really fundamental to succeed in that area : agility and technical excellence.
+That's why for a few years I am focusing on helping teams deliver well crafted software by coaching them on the implementation of agile practices.
+Further links:
+
+LinkedIn: https://www.linkedin.com/in/yoanthirion/
+Twitter: https://twitter.com/yot88
+GitHub: https://github.com/ythirion
+Knowledge base : https://yoan-thirion.gitbook.io/knowledge-base/
+
+About Guillaume Faas
+Building software has always been a passion of mine. This is still true after 10 years of experience in various environments and business sectors. I've never really considered it work but "problems to solve". Yes, I do love puzzles or anything that requires you to turn your head around ^^
+Passion also means curiosity and hunger for knowledge. I regularly read blogs, articles and books. Some of my favorite authors are Mr. Martin and Mr. Seemann.
+If I had to pick one priority when building a product, I would choose quality. This has always been what I put first. I'm not satisfied when "It Works", it must also be done well.
+Wherever I've been, I always tried to improve the team I joined. Whether by providing experience, a fresh eye, ideas or mentoring younger peers.
+Talking about mentoring, sharing knowledge represents a key aspect of my participation in a team. I do believe that knowledge is useless if you keep it to yourself. We need to use our knowledge to teach and inspire others, the same way others have inspired us.
+Feel free to take a look at my GitHub account : https://github.com/Tr00d. You'll find katas I do for fun or coaching purposes but mostly, you'll see the way I code.
+Further links:
+
+LinkedIn: https://www.linkedin.com/in/guillaumefaas/
+GitHub: https://github.com/Tr00d
+Tech ExcellenceSee more events

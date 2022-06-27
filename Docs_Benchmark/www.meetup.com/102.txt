@@ -1,0 +1,19 @@
+https://www.meetup.com/maryland-education-technology-meetup-group/events/285648203
+Cisco Enterprise Networks: Learn How to Implement and Configure OSPF, Tue, Jul 12, 2022, 1:00 PM   | Meetup
+--no date--
+
+DetailsJoin NetCom Learning trainer along with Managed Learning Services leader NetCom Learning for a complimentary interactive Virtual Meetup on "Cisco Enterprise Networks: Learn How to Implement and Configure OSPF"
+Register Here 👉👉 https://bit.ly/3s7G8yN
+Master Open Shortest Path First (OSPF)- designed specifically for IP networks!.
+Learn how to configure the OSPF dynamic routing protocol from start to finish, for both IPv4 and IPv6.
+In this free webinar, you’ll learn how to configure OSPF for IPv4 securely. Discover how to redistribute routes between OSPF and other routing protocols and get the latest practices to configure OSPF for IPv6. Delivered by a Cisco certified instructor, your teams will have the skills and knowledge of OSPF needed to configure it anytime, anywhere.
+Date: 07/12/2022
+Time: 10:00 A.M. PST/ 1:00 P.M. EST
+Agenda
+
+The SCRUM approach to project success
+How to solve project problems with SCRUM
+Establishing your SCRUM team
+Getting stories done in SCRUM
+Q&A session with the speaker
+Maryland Events on  New Technology and EductaionSee more events

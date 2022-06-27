@@ -1,0 +1,17 @@
+https://www.meetup.com/maryland-education-technology-meetup-group/events/286115422
+Virtual Event - Getting Started with Well-Architected Framework on AWS, Thu, Jul 14, 2022, 1:00 PM   | Meetup
+--no date--
+
+DetailsJoin NetCom Learning trainer along with Managed Learning Services leader NetCom Learning for a complimentary interactive Virtual Meetup on "Getting Started with Well-Architected Framework on AWS"
+This complimentary Instructor-led Virtual session gives you the right instruction to evaluate your existing architecture and workloads, and implement cloud technology features to help meet your business objectives.
+Date: 07/14/2022
+Time: 1:00 P.M. EST/ 10:00 A.M. PST
+REGISTER HERE: https://bit.ly/3wILHp6
+Agenda
+
+Introduction to AWS Well-Architected Framework
+Benefits of AWS Well-Architected Framework
+Evaluating workloads with AWS Well-Architected Framework
+Tips and tricks to optimize your cloud architecture
+What’s new with AWS Well-Architected Framework
+Maryland Events on  New Technology and EductaionSee more events

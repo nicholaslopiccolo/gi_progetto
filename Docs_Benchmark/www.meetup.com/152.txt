@@ -1,0 +1,14 @@
+https://www.meetup.com/quantum-computing-and-big-data/events/285404767
+Optimized and hardware-aware solutions to quantum problems, Sat, Jul 9, 2022, 1:00 PM   | Meetup
+--no date--
+
+DetailsSummary:
+The Apollo 11 onboard computer had about 70 KB of ROM. Creating highly-efficient code is important not just for landing a man on the moon, but also to take maximum advantage of the current resource limitations of quantum computers. And unlike the space program, today's quantum users do have to plan to move their code from one hardware platform to another. Thus, quantum circuits not only need to be generically optimized but also take into account the particular characteristics of the quantum computer they run on. How does one create such circuits? How efficient can they become? Would a machine be able to perform this better than a human programmer? We'll discuss these questions and demonstrate practical applications in optimization, chemistry, and more.
+Speakers:
+Erik Garcell PhD – Technical Marketing Manager, Classiq
+As Technical Marketing Manager, Erik works to articulate the value of quantum computing and how Classiq is revolutionizing the process of developing quantum algorithms.
+Erik earned his PhD in Physics from the University of Rochester in 2019, as well as a Master of Science in Technical Entrepreneurship and Management in 2015. He pursued his research on the interactions of femtosecond laser pulses with metals at the University of Rochester’s Institute of Optics, resulting in six first authored publications in journals such as the Journal of Applied Physics and Optical Materials Express. His research and graduate education were supported by the U.S. Air Force Office of Scientific Research, the National Science Foundation, and the Bill & Melinda Gates Foundation.
+Erik also has two patents from his time working at Kodak Alaris as an Innovation Research Scientist and IP Coordinator.
+Yuval Boger (M.Sc, Physics) is the Chief Marketing Officer of Classiq Technologies (www.classiq.io), a company pioneering a new approach to designing quantum computing circuits. Boger served as CEO and CMO for technology companies from the seed stage to NASDAQ. He is now focused on quantum computing and its broad societal impact.
+Moderator:
+Pawel Gora, CEO of Quantum AI FoundationQuantum Computing and Data ScienceSee more events

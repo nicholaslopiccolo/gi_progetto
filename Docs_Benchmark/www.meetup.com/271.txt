@@ -1,0 +1,18 @@
+https://www.meetup.com/maryland-education-technology-meetup-group/events/285942731
+Master Class: Understand the Fundamentals of Architecting on AWS, Mon, Jun 27, 2022, 10:00 AM   | Meetup
+--no date--
+
+DetailsJoin NetCom Learning trainer along with Managed Learning Services leader NetCom Learning for a complimentary interactive Virtual Meetup on "Master Class: Understand the Fundamentals of Architecting on AWS" .
+The Architecting on AWS Master Class is a complimentary Instructor-led Virtual session that covers the fundamentals of building IT infrastructure on the AWS platform. In this session, learners will explore the best practices and design patterns for architecting optimal IT solutions on the AWS Cloud. Moreover, they will also get an opportunity to build and explore a variety of infrastructures through guided discussions and hands-on activities, and much more!
+Date: 06/27/2022
+Time: 10:00 A.M. EST/ 7:00 A.M. PST
+REGISTER HERE: https://bit.ly/3FMJoFm
+Agenda:
+
+Understand and apply the Well-Architected Framework
+Introduction to AWS Global Infrastructure
+Familiarity with Amazon Simple Storage Service (Amazon S3) and Amazon S3 Glacier
+Choosing AWS Regions for your architecture
+Hands-on lab: Hosting a Static Website
+Q&A session with the speaker
+Maryland Events on  New Technology and EductaionSee more events

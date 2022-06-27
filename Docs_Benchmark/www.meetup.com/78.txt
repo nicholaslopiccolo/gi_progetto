@@ -1,0 +1,15 @@
+https://www.meetup.com/blockchain-data-viz/events/286699217
+Blockchain data visualization, Thu, Jun 30, 2022, 6:00 PM   | Meetup
+--no date--
+
+DetailsThis week we will dive into Arbitrum's data. Arbitrum is a layer 2 Blockchain that is working on top of Ethereum. While these Layer 2 projects benefit from the security of ethereum, they allow for higher transaction through put.
+It's better to have prior knowledge about them before you participate. But If you don't its ok, we will take some time in the break out room to talk about it.
+We are fetching data from this link:
+https://app.flipsidecrypto.com/velocity?nav=Discover
+most specifically, we will be digging in the Arbitrum data which is coming soon to Flipside data base.
+So, you save time if you sign up before hand.
+Our Agenda:
+6:00 - 6:05 Introduction
+6:05 - 6:20 problem statement
+6:20 - 7:00 personal development / breakout sessions for troubleshooting
+7:00 - 7:30 presentationBlockchain data vizSee more events

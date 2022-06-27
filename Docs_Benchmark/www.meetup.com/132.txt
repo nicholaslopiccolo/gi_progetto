@@ -1,0 +1,18 @@
+https://www.meetup.com/maryland-education-technology-meetup-group/events/285945861
+Virtual Meetup - AWS Discovery Day -Machine Learning Basics, Thu, Jul 28, 2022, 10:00 AM   | Meetup
+--no date--
+
+DetailsJoin NetCom Learning trainer along with Managed Learning Services leader NetCom Learning for a complimentary interactive Virtual Meetup on "AWS Discovery Day -Machine Learning Basics"
+This complimentary Instructor-led Virtual session is designed to make you familiar about important concepts, terminology, and the phases of a machine learning pipeline using real-world examples. Learn how you can unlock new insights and value for your business using machine learning.
+Participants get access to NetCom 365 - our comprehensive digital learning platform featuring reporting capabilities and a rich repository of additional resources. Being an Official AWS Partner Network (APN) training partner, we are also providing all learners complimentary VIP access to 200+ Official e-Learning courses from AWS.
+Date: 07/28/2022
+Time: 10:00 A.M. EST/ 7:00 A.M. PST
+REGISTER HERE: https://bit.ly/3JqDfA6
+Agenda
+
+What is Machine Learning?
+Learn about machine learning pipeline and its phases.
+Know the difference between supervised and unsupervised learning.
+Learn about reinforcement learning & deep learning.
+Q&A with Speaker.
+Maryland Events on  New Technology and EductaionSee more events

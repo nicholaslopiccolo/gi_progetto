@@ -1,0 +1,28 @@
+https://www.meetup.com/wordpress-social-learning/events/286708755
+Design With Me: Create a WordPress Blog Of Your Own, Fri, Jun 24, 2022, 1:00 PM   | Meetup
+--no date--
+
+DetailsDo you have a GREAT idea for a blog? Are you ready to get started writing, but need a little guidance? Do you want to get started blogging with WordPress, but aren't sure where to start?
+If so, this social learning space is for you! Join us for this collaborative, second-of-its-kind learning space where you will watch an instructor set up one small step of a blog, be given the opportunity to try it on your own test blog, then troubleshoot with other learners if you get stuck.
+We will provide...
+
+A test WordPress sandbox that will last 24 hours for you to experiment with (You are also welcome to use a blank WordPress installation of a host of your choice, but do know that we may not quite get to a polished "finished product" during this period)
+Hands-on guided instruction, I Do / You Do / We Do Style
+
+You Should Bring...
+
+An idea for a blog (such as a lifestyle blog, professional blog, cooking blog, pet blog, or something else!)
+Images you might like to use in and around your blog posts. You can use your own, or use OpenVerse to find some photos ahead of time.
+(Optional) 2 or 3 written blog posts if you want to use your own content, though you can also use some filler text for the lesson -- we will also be playing with dummy content in order to better fill out our sandbox sites for experimentation!
+
+You Will Learn...
+
+Basic Setup using Full Site Editing (Colors, Typography)
+How to Publish your First Blog (Including How to Set a Featured Image, Excerpt, and How to Schedule a Post For a Future Time)
+How to Use Query Loops to Display Your Blog Posts (The Way You Would Like)
+The Difference Between Categories & Tags -- And How To Create Different Blog Pages By Category (for example, a Lifestyle blog may have separate pages for posts about 1. Beauty, 2. Travel, and 3. Recipes)
+
+Audience: Users
+Level: Beginner
+Where: Zoom (link will be visible after RSVP)
+Language: English (automated closed captioning provided)WordPress Social LearningSee more events
