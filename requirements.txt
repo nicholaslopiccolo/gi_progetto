@@ -2,4 +2,3 @@ nltk
 beautifulsoup4
 Whoosh
 requests
-dryscrape
